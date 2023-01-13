@@ -1,14 +1,23 @@
 //import 3rd party modules
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+const logger = require('morgan')
 
 //import routes
 const adminRoutes = require('./routes/admin');
 const recipeRoutes = require('./routes/recipe');
 const rootDirectory = require('./utils/path-helper');
 
+
+
 //config and instance of express
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'src/views');
+
+app.use(logger('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(rootDirectory, 'public')));
