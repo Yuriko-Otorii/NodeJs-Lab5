@@ -298,60 +298,23 @@
   },
   {
     "id": 6,
-    "name": "test",
+    "name": "Karaage",
     "ingredient": [
       {
-        "name": "test",
-        "quantity": "1"
-      }
-    ],
-    "instruction": [
-      "test"
-    ]
-  },
-  {
-    "id": 7,
-    "name": "new test",
-    "ingredient": [
-      {
-        "name": "abc",
-        "quantity": "1"
+        "name": "Chicken",
+        "quantity": "500g"
       },
       {
-        "name": "bdc",
-        "quantity": "4"
+        "name": "nisshin karaage powder",
+        "quantity": "100g"
       }
     ],
     "instruction": [
-      "qwrqwrqwr",
-      "qweqwqr",
-      "eryejfgh"
-    ]
-  },
-  {
-    "id": 8,
-    "name": "8th recipe",
-    "ingredient": [
-      {
-        "name": "test",
-        "quantity": "100"
-      }
-    ],
-    "instruction": [
-      "hogehoge"
-    ]
-  },
-  {
-    "id": 9,
-    "name": "9th recipe",
-    "ingredient": [
-      {
-        "name": "test",
-        "quantity": "100"
-      }
-    ],
-    "instruction": [
-      "hogehoge"
+      "Pour powder onto a bowl and mix with 100cc water",
+      "Cut slices of chicken in bite size",
+      "Marinate the chicken onto the batter",
+      "Leave it to marinate for 30minutes",
+      "DEEP FRY AWAY!!!"
     ]
   }
 ]

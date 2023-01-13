@@ -5,11 +5,9 @@ const path = require('path');
 const logger = require('morgan')
 
 //import routes
-const adminRoutes = require('./routes/admin');
-const recipeRoutes = require('./routes/recipe');
+const indexRoute = require('./routes/index.route');
+const recipeRoutes = require('./routes/recipe.route');
 const rootDirectory = require('./utils/path-helper');
-
-
 
 //config and instance of express
 const app = express();
@@ -23,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(rootDirectory, 'public')));
 
 //routes
-app.use('/admin', adminRoutes);
+app.use('/', indexRoute);
 app.use('/recipes', recipeRoutes)
 
 //catch-all route/middleware
