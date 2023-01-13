@@ -15,7 +15,7 @@ app.use(express.static(path.join(rootDirectory, 'public')));
 
 //routes
 app.use('/admin', adminRoutes);
-app.use(recipeRoutes)
+app.use('/recipes', recipeRoutes)
 
 //catch-all route/middleware
 app.use((req,res,next) => {
@@ -27,3 +27,6 @@ const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)
 })
+
+
+// Client(Browser) ---> Entry File ---> Routes ---> Controllers ---> Models

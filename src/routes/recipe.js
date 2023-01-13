@@ -5,18 +5,29 @@ const rootDir = require('../utils/path-helper');
 
 const router = express.Router();
 
-//dynamic route
-// router.get('/:greet', (req, res, next) => {
-//     console.log(req.params.greet);
-//     res.send(`<h1>Hello ${req.params.greet}</h1>`)
-// })
 
-router.get('/', (req, res, next) => {
-    // console.log(path.join('../templates/homepage.html'))
-    // res.send('<h1>Hello from Express!</h1>');
-    // res.sendFile('/Users/francoispolo/Desktop/Lab/A-0522/NodeJS/W1/D3/express-recipes/src/template/homepage.html')
-    // res.sendFile(path.join(__dirname, '..', 'template' , 'homepage.html'))
-    res.sendFile(path.join(rootDir, 'template' , 'homepage.html'))
-})
+/**
+ * @route GET //localhost:8000/recipes/
+ * @desc Get all recipes
+ */
+router.get('/') 
+
+/**
+ * @route POST //localhost:8000/recipes/save
+ * @desc Save a recipe
+ */
+router.post('/save')
+
+/**
+ * @route GET //localhost:8000/recipes/create
+ * @desc Get the create recipe form
+ */
+router.get('/create')
+
+/**
+ * @route GET //localhost:8000/recipes/:id
+ * @desc Get a single recipe by id
+**/
+router.get('/:id')
 
 module.exports = router;
