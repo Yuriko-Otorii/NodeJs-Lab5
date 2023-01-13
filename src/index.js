@@ -5,10 +5,13 @@ const bodyParser = require('body-parser');
 //import routes
 const adminRoutes = require('./routes/admin');
 const recipeRoutes = require('./routes/recipe');
+const rootDirectory = require('./utils/path-helper');
 
-//initialize express and body-parser
+//config and instance of express
 const app = express();
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.static(path.join(rootDirectory, 'public')));
 
 //routes
 app.use('/admin', adminRoutes);
@@ -18,7 +21,6 @@ app.use(recipeRoutes)
 app.use((req,res,next) => {
     res.status(404).send('<h1>Page not found</h1>')
 })
-
 
 //start server
 const PORT = process.env.PORT || 8000
