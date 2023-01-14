@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan')
+const methodOverride = require('method-override');
+
 
 //import routes
 const indexRoute = require('./routes/index.route');
@@ -19,6 +21,7 @@ app.use(logger('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(rootDirectory, 'public')));
+app.use(methodOverride('_method'))
 
 //routes
 app.use('/', indexRoute);

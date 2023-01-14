@@ -34,6 +34,36 @@ module.exports = class Recipe {
         })
     }
 
+    update(callback, id){
+        fs.readFile(dataPath, "utf8", (err, data) => {
+            if(err){
+                callback({ message: "Could not read recipe.json", status: 500 })
+            }
+    
+            //Parse the JSON file
+            const recipes = JSON.parse(data)
+            recipes.map(elem => {
+                if(elem.id === parseInt(id)){
+                    return (
+                        elem.name = this.name,
+                        elem.ingredient = this. ingredient,
+                        elem.instruction = this.instruction
+                    )
+                }
+                return elem
+            })
+    
+            //Write the new data to JSON file
+            fs.writeFile(dataPath, JSON.stringify(recipes, null, 2),"utf8", (err) => {
+                if(err){
+                    callback({ message: "Could not write to recipe.json", status: 500 })
+                }
+                callback({ message: "Recipe updatedd successfully", status: 200 })
+            })
+        })
+
+    }
+
     static fetchAllRecipes(callback){ 
         fs.readFile(dataPath, (err, data) => {
             if(err){
@@ -53,5 +83,26 @@ module.exports = class Recipe {
 
         return recipes.find(recipe => recipe.id === parseInt(id))
     }
+
+
+
+    static deleteRecipe(callback, id){
+        fs.readFile(dataPath, "utf8", (err, data) => {
+            if(err){
+                callback({ message: "Could not read recipe.json", status: 500 })
+            }
     
+            //Parse the JSON file
+            const recipes = JSON.parse(data)
+            const filterdRecipes = recipes.filter(elem => elem.id !== parseInt(id))
+            
+            //Write the new data to JSON file
+            fs.writeFile(dataPath, JSON.stringify(filterdRecipes, null, 2),"utf8", (err) => {
+                if(err){
+                    callback({ message: "Could not write to recipe.json", status: 500 })
+                }
+                callback({ message: "Recipe updatedd successfully", status: 200 })
+            })
+        })
+    }
 }

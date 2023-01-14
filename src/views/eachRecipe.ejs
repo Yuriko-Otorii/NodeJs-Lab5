@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-full bg-blue-50">
+    <div class="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">
+      <div class="py-5">
+        <div>
+          <h1 class="text-3xl"><%= fetchRecipe.name %></h1>
+          <div class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+            <p class="p-3 text-gray-900">Ingredients:</p>
+            <ol class="p-3">
+              <% fetchRecipe.ingredient.forEach(ingredient => { %>
+              <li class="text-xs font-light mb-1">
+                <span class="font-bold"><%= ingredient.name %></span> - <%=
+                ingredient.quantity %>
+              </li>
+              <% }); %>
+            </ol>
+            <p class="p-3 text-gray-900">Instructions:</p>
+            <ol class="p-3">
+              <% fetchRecipe.instruction.forEach(instruction => { %>
+              <li class="text-xs font-light mb-1"><%= instruction %></li>
+              <% }); %>
+            </ol>
+          </div>
+          <div class="flex gap-4">
+            <a
+              href="/recipes/<%= fetchRecipe.id %>/edit"
+              class="w-24 text-center block bg-green-500 hover:bg-green-400 focus:bg-green-400 text-white font-semibold rounded-lg px-4 py-3 mt-6"
+              >Update</a
+            >
+            <form
+              action="/recipes/<%= fetchRecipe.id %>/delete?_method=DELETE"
+              method="POST"
+            >
+              <button
+                type="submit"
+                class="w-24 block bg-green-500 hover:bg-green-400 focus:bg-green-400 text-white font-semibold rounded-lg px-4 py-3 mt-6"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
